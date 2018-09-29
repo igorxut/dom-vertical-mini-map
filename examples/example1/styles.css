@@ -1,0 +1,30 @@
+.main {
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: 1fr;
+  width: 90%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 0.5rem;
+}
+
+.form-group {
+  padding: 3rem;
+}
+
+.form-group label {
+  padding-right: 3rem;
+  vertical-align: top;
+}
+
+.form-group textarea,
+.form-group input {
+  vertical-align: top;
+}
+
+.has-error {
+  border-color: red;
+}
