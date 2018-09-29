@@ -272,7 +272,7 @@ Reset DomVerticalMiniMap component and remove it from DOM.
 
 <h3>refresh</h3>
 
-Reinitialize MapPointElements and refresh styles of #scrollElement and MapPointElements.
+Reinitialize MapPointElements and refresh styles of _scrollElement and MapPointElements.
 
 <h2>Usage</h2>
 
