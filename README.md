@@ -1,33 +1,81 @@
-<h1>DomVerticalMiniMap</h1>
+# DomVerticalMiniMap
 
 [![License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/igorxut/dom-vertical-mini-map/blob/master/LICENSE)
 [![NPM version](https://img.shields.io/npm/v/dom-vertical-mini-map.svg)](https://www.npmjs.com/package/dom-vertical-mini-map)
 
-<h2>Description</h2>
+## Table of contents
+
+- [Description](#description)
+- [Installation](#installation)
+  * [NMP](#nmp)
+  * [Manual](#manual)
+- [Glossary](#glossary)
+- [Configuration](#configuration)
+  * [styles](#styles)
+    + [backgroundColor](#stylesbackgroundcolor)
+    + [borderColor](#stylesbordercolor)
+    + [position](#stylesposition)
+    + [width](#styleswidth)
+    + [zIndex](#styleszindex)
+  * [scroll](#scroll)
+    + [enabled](#scrollenabled)
+    + [styles](#scrollstyles)
+      - [backgroundColor](#scrollstylesbackgroundcolor)
+  * [points](#points)
+- [Object of 'points' array](#object-of-points-array)
+  * [draw](#draw)
+    + [selector](#drawselector)
+    + [selectorContains](#drawselectorcontains)
+    + [styles](#drawstyles)
+      - [backgroundColor](#drawstylesbackgroundcolor)
+      - [outlineColor](#drawstylesoutlinecolor)
+  * [focus](#focus)
+    + [enabled](#focusenabled)
+    + [selector](#focusselector)
+  * [scroll](#scroll-1)
+    + [enabled](#scrollenabled-1)
+    + [selector](#scrollselector)
+    + [type](#scrolltype)
+  * [titleConstructor](#titleconstructor)
+- [Object of 'titleConstructor' array](#object-of-titleconstructor-array)
+  * [text](#text)
+  * [selector](#selector)
+  * [attribute](#attribute)
+  * [textContent](#textcontent)
+- [Getters](#getters)
+  * [root](#root)
+  * [version](#version)
+- [Methods](#methods)
+  * [create](#create)
+  * [destroy](#destroy)
+  * [refresh](#refresh)
+- [Usage](#usage)
+- [License](#license)
+
+## Description
 
 Component for creating vertical mini-map on html-page for [document.body](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) element.
 
 Component inject in DOM of page and has `position: fixed`.
 
-<h2>Installation</h2>
+## Installation
 
-<h3>NMP</h3>
+### NMP
 
 ```shell
 npm install dom-vertical-mini-map
 ```
 
-<h3>Manual</h3>
+### Manual
 
-<p><a href="https://github.com/igorxut/dom-vertical-mini-map/blob/master/dist" target="_blank">Download files</a> from repository and use on page:
+<a href="../master/dist" target="_blank">Download files</a> from repository and use on page:
 
 ```html
 <link rel="stylesheet" href="dom-vertical-mini-map.css">
 <script src="dom-vertical-mini-map.js"></script>
 ```
-</p>
 
-<h2>Glossary</h2>
+## Glossary
 
 MapElement - root HTMLElement of DomVerticalMiniMap.
 
@@ -35,253 +83,253 @@ ScrollMapElement - HTMLElement represented Window on MapElement.
 
 MapPointElement - HTMLElement represented founded HTMLElement on MapElement.
 
-![Schema](/static/schema.jpg)
+![Schema](../blob/master/static/schema.jpg "Schema")
 
-<h2>Configuration</h2>
+## Configuration
 
-<h3>styles</h4>
+### styles
 
-<i>Styles of MapElement.</i>
+_Styles of MapElement._
 
 Type: Object  
 Required: false
 
-<h4>styles.backgroundColor</h4>
+#### styles.backgroundColor
 
-<i>Value of CSS property [background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color) of MapElement.</i>
+_Value of CSS property [background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color) of MapElement._
 
 Type: String  
 Default: `rgba(248, 249, 250, 1)`
 
-<h4>styles.borderColor</h4>
+#### styles.borderColor
 
-<i>Value of CSS property [background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color) of MapElement.</i>
+_Value of CSS property [background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color) of MapElement._
 
 Type: String  
 Default: `rgba(108, 117, 125, 1)`
 
-<h4>styles.position</h4>
+#### styles.position
 
-<i>Position of MapElement on page.</i>
+_Position of MapElement on page._
 
 Type: String  
 Values: `left`, `right`  
 Default: `right`
 
-<h4>styles.width</h4>
+#### styles.width
 
-<i>Value of CSS property [background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/width) of MapElement.</i>
+_Value of CSS property [background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/width) of MapElement._
 
 Type: String  
 Default: `1rem`
 
-<h4>styles.zIndex</h4>
+#### styles.zIndex
 
-<i>Value of CSS property [background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index) of MapElement.</i>
+_Value of CSS property [background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index) of MapElement._
 
 Type: Number  
 Default: `1000`
 
-<h3>scroll</h3>
+### scroll
 
-<i>Options of ScrollMapElement.</i>
+_Options of ScrollMapElement._
 
 Type: Object  
 Required: false
 
-<h4>scroll.enabled</h4>
+#### scroll.enabled
 
-<i>Enables ScrollMapElement.</i>
+_Enables ScrollMapElement._
 
 Type: Boolean  
 Default: `true`
 
-<h4>scroll.styles</h4>
+#### scroll.styles
 
-<i>Styles of ScrollMapElement.</i>
+_Styles of ScrollMapElement._
 
-Type: Object
+Type: Object  
 Required: false
 
-<h5>scroll.styles.backgroundColor</h5>
+##### scroll.styles.backgroundColor
 
-<i>Value of CSS property [background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color) of ScrollMapElement. Use 'alpha' for opacity.</i>
+_Value of CSS property [background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color) of ScrollMapElement. Use 'alpha' for opacity._
 
 Type: String  
 Default: `rgba(108, 117, 125, 0.3)`
 
-<h3>points</h3>
+### points
 
-<i>Array of objects. Every object configure one MapPointElement.</i>
+_Array of objects. Every object configure one MapPointElement._
 
-Type: Array
+Type: Array  
 Required: true
 
-<h2>Object of [points](https://github.com/igorxut/dom-vertical-mini-map#points) array</h2>
+## Object of points array
 
-<h3>draw</h3>
+### draw
 
-<i>Configure drawing of MapPointElement.</i>
+_Configure drawing of MapPointElement._
 
 Type: Object  
 Required: True
 
-<h4>draw.selector</h4>
+#### draw.selector
 
-<i>CSS selector for searching HTMLElements on page by [document.querySelectorAll()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll).</i>
+_CSS selector for searching HTMLElements on page by [document.querySelectorAll()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll)._
 
 Type: String  
 Required: true
 
-<h4>draw.selectorContains</h4>
+#### draw.selectorContains
 
-<i>CSS selector for searching by [querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) HTMLElement in element.  
-Filter elements founded by `draw.selector` if specified.</i>
+_CSS selector for searching by [querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) HTMLElement in element.  
+Filter elements founded by `draw.selector` if specified._
 
 Type: String  
 Required: false
 
-<h4>draw.styles</h4>
+#### draw.styles
 
-<i>Styles of MapPointElement.</i>
+_Styles of MapPointElement._
 
 Type: Object  
 Required: false
 
-<h5>draw.styles.backgroundColor</h5>
+##### draw.styles.backgroundColor
 
-<i>Value of CSS property [background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color) of MapPointElement.</i>
+_Value of CSS property [background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color) of MapPointElement._
 
 Type: String  
 Default: `rgba(220, 53, 69, 1)`
 
-<h5>draw.styles.outlineColor</h5>
+##### draw.styles.outlineColor
 
-<i>Value of CSS property [background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/outline-color) on hover of MapPointElement.</i>
+_Value of CSS property [background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/outline-color) on hover of MapPointElement._
 
 Type: String  
 Default: value of `styles.borderColor` of MapElement
 
-<h3>focus</h3>
+### focus
 
-<i>Configure focus for MapPointElement.</i>
+_Configure focus for MapPointElement._
 
 Type: Object  
 Required: false
 
-<h4>focus.enabled</h4>
+#### focus.enabled
 
-<i>Enables [focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) element on MapPointElement click.</i>
+_Enables [focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) element on MapPointElement click._
 
 Type: Boolean  
 Default: false
 
-<h4>focus.selector</h4>
+#### focus.selector
 
-<i>CSS selector for searching by [querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) HTMLElement (for focus) in element founded by `draw.selector`.</i>
+_CSS selector for searching by [querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) HTMLElement (for focus) in element founded by `draw.selector`._
 
 Type: String  
 Default: element founded by `draw.selector`
 
-<h3>scroll</h3>
+### scroll
 
-<i>Configure scroll for MapPointElement.</i>
+_Configure scroll for MapPointElement._
 
 Type: Object  
 Required: false
 
-<h4>scroll.enabled</h4>
+#### scroll.enabled
 
-<i>Enables scroll on MapPointElement click.</i>
+_Enables scroll on MapPointElement click._
 
 Type: Boolean  
 Default: true
 
-<h4>scroll.selector</h4>
+#### scroll.selector
 
-<i>CSS selector for searching by [querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) HTMLElement (for scroll) in element founded by `draw.selector`.</i>
+_CSS selector for searching by [querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) HTMLElement (for scroll) in element founded by `draw.selector`._
 
 Type: String  
 Default: element founded by `draw.selector`
 
-<h4>scroll.type</h4>
+#### scroll.type
 
-<i>Scrolls the Window to element (top/bottom/middle of Window) in the Document.</i>
+_Scrolls the Window to element (top/bottom/middle of Window) in the Document._
 
 Type: String  
 Values: `top`, `bottom`, `middle`  
 Default: `top`
 
-<h3>titleConstructor</h3>
+### titleConstructor
 
-<i>Array of objects. Every object concat text for `title` attribute of MapPointElement. Text separates by `\n`.  
-Priorities for concat of one object: `text`, `textContent`, `attribute`.</i>
+_Array of objects. Every object concat text for `title` attribute of MapPointElement. Text separates by `\n`.  
+Priorities for concat of one object: `text`, `textContent`, `attribute`._
 
 Type: Array  
 Required: false
 
-<h2>Object of [titleConstructor](https://github.com/igorxut/dom-vertical-mini-map#titleconstructor) array</h2>
+## Object of titleConstructor array
 
-<h3>text</h3>
+### text
 
-<i>Custom text.</i>
-
-Type: String  
-Required: false
-
-<h3>selector</h3>
-
-<i>CSS selector for searching by [querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) HTMLElement for analyze.</i>
+_Custom text._
 
 Type: String  
 Required: false
 
-<h3>attribute</h3>
+### selector
 
-<i>Take value from `attribute` of element founded by `selector`.</i>
-
-Type: String  
-Required: false
-
-<h3>textContent</h3>
-
-<i>Take string from `textContent` of element founded by `selector`.</i>
+_CSS selector for searching by [querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) HTMLElement for analyze._
 
 Type: String  
 Required: false
 
-<h2>Getters</h2>
+### attribute
 
-<h3>root</h3>
+_Take value from `attribute` of element founded by `selector`._
+
+Type: String  
+Required: false
+
+### textContent
+
+_Take string from `textContent` of element founded by `selector`._
+
+Type: String  
+Required: false
+
+## Getters
+
+### root
 
 Return MapElement.
 
-<h3>version</h3>
+### version
 
 Return version of DomVerticalMiniMap.
 
-<h2>Methods</h2>
+## Methods
 
-<h3>create</h3>
+### create
 
 Create and inject DomVerticalMiniMap component in DOM.
 
-<h3>destroy</h3>
+### destroy
 
 Reset DomVerticalMiniMap component and remove it from DOM.
 
-<h3>refresh</h3>
+### refresh
 
-Reinitialize MapPointElements and refresh styles of _scrollElement and MapPointElements.
+Reinitialize MapPointElements and refresh styles of ScrollMapElement and MapPointElements.
 
-<h2>Usage</h2>
+## Usage
 
-See <a href="https://github.com/igorxut/dom-vertical-mini-map/blob/master/examples">examples</a>.
+See [examples](../master/examples).
 
 Live examples:
 
  * [example1](https://jsfiddle.net/igorxut/utnfmkvj/)
 
-<h2>License</h2>
+## License
 
 <p><a href="http://opensource.org/licenses/MIT" target="_blank">MIT</a></p>
