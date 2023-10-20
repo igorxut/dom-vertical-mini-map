@@ -83,7 +83,7 @@ ScrollMapElement - HTMLElement represented Window on MapElement.
 
 MapPointElement - HTMLElement represented founded HTMLElement on MapElement.
 
-![Schema](../blob/master/static/schema.jpg "Schema")
+![Schema](https://github.com/igorxut/dom-vertical-mini-map/blob/master/static/schema.jpg?raw=true)
 
 ## Configuration
 
