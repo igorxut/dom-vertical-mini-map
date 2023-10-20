@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <title>DomVerticalMiniMap example</title>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="../../dist/dom-vertical-mini-map.css">
-  <script src="../../dist/dom-vertical-mini-map.js"></script>
+  <link rel="stylesheet" href="../dist/dom-vertical-mini-map.css">
+  <script src="../dist/dom-vertical-mini-map.js"></script>
 </head>
 <body>
 <div class="main">
@@ -73,9 +73,8 @@
 
   const removeNode = function () {
     const lastChild = grid.lastChild;
-    lastChild.removeEventListener('input', toggleClass.bind(null, lastChild))
-
     if (lastChild != null) {
+      lastChild.removeEventListener('input', toggleClass.bind(null, lastChild))
       grid.removeChild(lastChild);
     }
   };
