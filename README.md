@@ -324,11 +324,7 @@ Reinitialize MapPointElements and refresh styles of ScrollMapElement and MapPoin
 
 ## Usage
 
-See [examples](../master/examples).
-
-Live examples:
-
- * [example1](https://jsfiddle.net/igorxut/utnfmkvj/)
+See [examples](https://igorxut.github.io/dom-vertical-mini-map/).
 
 ## License
 
