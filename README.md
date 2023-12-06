@@ -7,48 +7,21 @@
 
 - [Description](#description)
 - [Installation](#installation)
-  * [NMP](#nmp)
-  * [Manual](#manual)
+  - [NMP](#nmp)
+  - [Manual](#manual)
 - [Glossary](#glossary)
 - [Configuration](#configuration)
-  * [styles](#styles)
-    + [backgroundColor](#stylesbackgroundcolor)
-    + [borderColor](#stylesbordercolor)
-    + [position](#stylesposition)
-    + [width](#styleswidth)
-    + [zIndex](#styleszindex)
-  * [scroll](#scroll)
-    + [enabled](#scrollenabled)
-    + [styles](#scrollstyles)
-      - [backgroundColor](#scrollstylesbackgroundcolor)
-  * [points](#points)
-- [Object of 'points' array](#object-of-points-array)
-  * [draw](#draw)
-    + [selector](#drawselector)
-    + [selectorContains](#drawselectorcontains)
-    + [styles](#drawstyles)
-      - [backgroundColor](#drawstylesbackgroundcolor)
-      - [outlineColor](#drawstylesoutlinecolor)
-  * [focus](#focus)
-    + [enabled](#focusenabled)
-    + [selector](#focusselector)
-  * [scroll](#scroll-1)
-    + [enabled](#scrollenabled-1)
-    + [selector](#scrollselector)
-    + [type](#scrolltype)
-  * [titleConstructor](#titleconstructor)
-- [Object of 'titleConstructor' array](#object-of-titleconstructor-array)
-  * [text](#text)
-  * [selector](#selector)
-  * [attribute](#attribute)
-  * [textContent](#textcontent)
+  - [styles](#styles)
+  - [scroll](#scroll)
+    - [styles](#scrollStyles)
+  - [points](#points)
+    - [draw](#pointsDraw)
+      - [styles](#pointsDrawStyles)
+    - [focus](#pointsFocus)
+    - [scroll](#pointsScroll)
+    - [titleConstructor](#pointsTitleConstructor)
 - [Getters](#getters)
-  * [root](#root)
-  * [version](#version)
 - [Methods](#methods)
-  * [create](#create)
-  * [destroy](#destroy)
-  * [refresh](#refresh)
 - [Usage](#usage)
 - [License](#license)
 
@@ -68,259 +41,116 @@ npm install dom-vertical-mini-map
 
 ### Manual
 
-<a href="../master/dist" target="_blank">Download files</a> from repository and use on page:
+[Download](master/dist) files from repository and use on page:
 
 ```html
-<link rel="stylesheet" href="dom-vertical-mini-map.css">
+<link rel="stylesheet" href="dom-vertical-mini-map.css" />
 <script src="dom-vertical-mini-map.js"></script>
 ```
 
 ## Glossary
 
-MapElement - root HTMLElement of DomVerticalMiniMap.
+| Name             | Description                                                |
+|------------------|------------------------------------------------------------|
+| MapElement       | root HTMLElement of DomVerticalMiniMap                     |
+| ScrollMapElement | HTMLElement represented Window on MapElement.              |
+| MapPointElement  | HTMLElement represented founded HTMLElement on MapElement. |
 
-ScrollMapElement - HTMLElement represented Window on MapElement.
-
-MapPointElement - HTMLElement represented founded HTMLElement on MapElement.
-
-![Schema](https://github.com/igorxut/dom-vertical-mini-map/blob/master/static/schema.jpg?raw=true)
+![Schema](static/schema.jpg?raw=true)
 
 ## Configuration
 
+| Name              | Type   | Required | Description                                                                |
+|-------------------|--------|----------|----------------------------------------------------------------------------|
+| [styles](#styles) | Object | false    | Styles of [MapElement](#glossary).                                         |
+| [scroll](#scroll) | Object | false    | Options of [ScrollMapElement](#glossary).                                  |
+| [points](#points) | Array  | true     | Array of objects. Every object configure one [MapPointElement](#glossary). |
+
 ### styles
 
-_Styles of MapElement._
-
-Type: Object  
-Required: false
-
-#### styles.backgroundColor
-
-_Value of CSS property [background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color) of MapElement._
-
-Type: String  
-Default: `rgba(248, 249, 250, 1)`
-
-#### styles.borderColor
-
-_Value of CSS property [background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color) of MapElement._
-
-Type: String  
-Default: `rgba(108, 117, 125, 1)`
-
-#### styles.position
-
-_Position of MapElement on page._
-
-Type: String  
-Values: `left`, `right`  
-Default: `right`
-
-#### styles.width
-
-_Value of CSS property [background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/width) of MapElement._
-
-Type: String  
-Default: `1rem`
-
-#### styles.zIndex
-
-_Value of CSS property [background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index) of MapElement._
-
-Type: Number  
-Default: `1000`
+| Name            | Type   | Required | Values          | Default                  | Description                                                                                                                             |
+|-----------------|--------|----------|-----------------|--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| backgroundColor | String | false    |                 | `rgba(248, 249, 250, 1)` | Value of CSS property [background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color) of [MapElement](#glossary). |
+| borderColor     | String | false    |                 | `rgba(108, 117, 125, 1)` | Value of CSS property [border-color](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color) of [MapElement](#glossary).         |
+| position        | String | false    | `left`, `right` | `right`                  | Position of [MapElement](#glossary) on page.                                                                                            |
+| width           | String | false    |                 | `1rem`                   | Value of CSS property [width](https://developer.mozilla.org/en-US/docs/Web/CSS/width) of [MapElement](#glossary).                       |
+| zIndex          | Number | false    |                 | 1000                     | Value of CSS property [z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index) of [MapElement](#glossary).                   |
 
 ### scroll
 
-_Options of ScrollMapElement._
-
-Type: Object  
-Required: false
-
-#### scroll.enabled
-
-_Enables ScrollMapElement._
-
-Type: Boolean  
-Default: `true`
+| Name                    | Type    | Required | Default | Description                              |
+|-------------------------|---------|----------|---------|------------------------------------------|
+| enabled                 | Boolean | false    | true    | Enables [ScrollMapElement](#glossary).   |
+| [styles](#scrollStyles) | Object  | false    |         | Styles of [ScrollMapElement](#glossary). |
 
 #### scroll.styles
 
-_Styles of ScrollMapElement._
-
-Type: Object  
-Required: false
-
-##### scroll.styles.backgroundColor
-
-_Value of CSS property [background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color) of ScrollMapElement. Use 'alpha' for opacity._
-
-Type: String  
-Default: `rgba(108, 117, 125, 0.3)`
+| Name            | Type   | Required | Default                    | Description                                                                                                                                                            |
+|-----------------|--------|----------|----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| backgroundColor | String | false    | `rgba(108, 117, 125, 0.3)` | Value of CSS property [background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color) of [ScrollMapElement](#glossary). Use `alpha` for opacity. |
 
 ### points
 
-_Array of objects. Every object configure one MapPointElement._
+| Name                                        | Type   | Required | Description                                                                                                                                                                                        |
+|---------------------------------------------|--------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [draw](#pointsDraw)                         | Object | true     | Configure drawing of [MapPointElement](#glossary).                                                                                                                                                 |
+| [focus](#pointsFocus)                       | Object | false    | Configure focus for [MapPointElement](#glossary).                                                                                                                                                  |
+| [scroll](#pointsScroll)                     | Object | false    | Configure scroll for [MapPointElement](#glossary).                                                                                                                                                 |
+| [titleConstructor](#pointsTitleConstructor) | Array  | false    | Array of objects. Every object concat text for `title` attribute of [MapPointElement](#glossary). Text separates by `\n`. Priorities for concat of one object: `text`, `textContent`, `attribute`. |
 
-Type: Array  
-Required: true
+#### points.draw
 
-## Object of points array
+| Name                        | Type   | Required | Description                                                                                                                                                                                                            |
+|-----------------------------|--------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| selector                    | String | true     | CSS selector for searching HTMLElements on page by [document.querySelectorAll()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll).                                                          |
+| selectorContains            | String | false    | CSS selector for searching by [querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) HTMLElement in element. Filter elements founded by [draw](#pointsDraw).selector if specified. |
+| [styles](#pointsDrawStyles) | Object | false    | Styles of [MapPointElement](#glossary).                                                                                                                                                                                |
 
-### draw
+##### points.draw.styles
 
-_Configure drawing of MapPointElement._
+| Name            | Type   | Required | Default                                | Description                                                                                                                                     |
+|-----------------|--------|----------|----------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| backgroundColor | String | false    | `rgba(220, 53, 69, 1)`                 | Value of CSS property [background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color) of [MapPointElement](#glossary).    |
+| outlineColor    | String | false    | value of [styles](#styles).borderColor | Value of CSS property [outline-color](https://developer.mozilla.org/en-US/docs/Web/CSS/outline-color) on hover of [MapPointElement](#glossary). |
 
-Type: Object  
-Required: True
+##### points.focus
 
-#### draw.selector
+| Name     | Type    | Required | Default                                         | Description                                                                                                                        |
+|----------|---------|----------|-------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| enabled  | Boolean | false    | false                                           | Enables [focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) element on [MapPointElement](#glossary) click.    |
+| selector | String  | false    | element founded by [draw](#pointsDraw).selector | CSS selector for searching by [querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) HTMLElement (for focus) in element founded by [draw](#pointsDraw).selector. |
 
-_CSS selector for searching HTMLElements on page by [document.querySelectorAll()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll)._
+##### points.scroll
 
-Type: String  
-Required: true
+| Name     | Type    | Required | Values                    | Default                                         | Description                                                                                                                                                                                           |
+|----------|---------|----------|---------------------------|-------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| enabled  | Boolean | false    |                           | true                                            | Enables scroll on [MapPointElement](#glossary) click.                                                                                                                                                 |
+| selector | String  | false    |                           | element founded by [draw](#pointsDraw).selector | CSS selector for searching by [querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) HTMLElement (for scroll) in element founded by [draw](#pointsDraw).selector. |
+| type     | String  | false    | `top`, `bottom`, `middle` | `top`                                           | Scrolls the Window to element (top/bottom/middle of Window) in the Document.                                                                                                                          |
 
-#### draw.selectorContains
+##### points.titleConstructor
 
-_CSS selector for searching by [querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) HTMLElement in element.  
-Filter elements founded by `draw.selector` if specified._
-
-Type: String  
-Required: false
-
-#### draw.styles
-
-_Styles of MapPointElement._
-
-Type: Object  
-Required: false
-
-##### draw.styles.backgroundColor
-
-_Value of CSS property [background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color) of MapPointElement._
-
-Type: String  
-Default: `rgba(220, 53, 69, 1)`
-
-##### draw.styles.outlineColor
-
-_Value of CSS property [background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/outline-color) on hover of MapPointElement._
-
-Type: String  
-Default: value of `styles.borderColor` of MapElement
-
-### focus
-
-_Configure focus for MapPointElement._
-
-Type: Object  
-Required: false
-
-#### focus.enabled
-
-_Enables [focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) element on MapPointElement click._
-
-Type: Boolean  
-Default: false
-
-#### focus.selector
-
-_CSS selector for searching by [querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) HTMLElement (for focus) in element founded by `draw.selector`._
-
-Type: String  
-Default: element founded by `draw.selector`
-
-### scroll
-
-_Configure scroll for MapPointElement._
-
-Type: Object  
-Required: false
-
-#### scroll.enabled
-
-_Enables scroll on MapPointElement click._
-
-Type: Boolean  
-Default: true
-
-#### scroll.selector
-
-_CSS selector for searching by [querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) HTMLElement (for scroll) in element founded by `draw.selector`._
-
-Type: String  
-Default: element founded by `draw.selector`
-
-#### scroll.type
-
-_Scrolls the Window to element (top/bottom/middle of Window) in the Document._
-
-Type: String  
-Values: `top`, `bottom`, `middle`  
-Default: `top`
-
-### titleConstructor
-
-_Array of objects. Every object concat text for `title` attribute of MapPointElement. Text separates by `\n`.  
-Priorities for concat of one object: `text`, `textContent`, `attribute`._
-
-Type: Array  
-Required: false
-
-## Object of titleConstructor array
-
-### text
-
-_Custom text._
-
-Type: String  
-Required: false
-
-### selector
-
-_CSS selector for searching by [querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) HTMLElement for analyze._
-
-Type: String  
-Required: false
-
-### attribute
-
-_Take value from `attribute` of element founded by `selector`._
-
-Type: String  
-Required: false
-
-### textContent
-
-_Take string from `textContent` of element founded by `selector`._
-
-Type: String  
-Required: false
+| Name        | Type   | Required | Description                                                                                                                                       |
+|-------------|--------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| text        | String | false    | Custom text.                                                                                                                                      |
+| selector    | String | false    | CSS selector for searching by [querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) HTMLElement for analyze. |
+| attribute   | String | false    | Take value from `attribute` of element founded by [selector](#pointsTitleConstructor).selector.                                                   |
+| textContent | String | false    | Take string from `textContent` of element founded by [selector](#pointsTitleConstructor).selector.                                                |
 
 ## Getters
 
-### root
-
-Return MapElement.
-
-### version
-
-Return version of DomVerticalMiniMap.
+| Name    | Description                           |
+|---------|---------------------------------------|
+| root    | Return [MapElement](#glossary).       |
+| version | Return version of DomVerticalMiniMap. |
 
 ## Methods
 
-### create
-
-Create and inject DomVerticalMiniMap component in DOM.
-
-### destroy
-
-Reset DomVerticalMiniMap component and remove it from DOM.
-
-### refresh
-
-Reinitialize MapPointElements and refresh styles of ScrollMapElement and MapPointElements.
+| Name    | Description                                                                                                                       |
+|---------|-----------------------------------------------------------------------------------------------------------------------------------|
+| create  | Create and inject DomVerticalMiniMap component in DOM.                                                                            |
+| destroy | Reset DomVerticalMiniMap component and remove it from DOM.                                                                        |
+| refresh | Reinitialize [MapPointElements](#glossary) and refresh styles of [ScrollMapElement](#glossary) and [MapPointElements](#glossary). |
 
 ## Usage
 
@@ -328,4 +158,4 @@ See [examples](https://igorxut.github.io/dom-vertical-mini-map/).
 
 ## License
 
-<p><a href="http://opensource.org/licenses/MIT" target="_blank">MIT</a></p>
+[MIT](http://opensource.org/licenses/MIT)
