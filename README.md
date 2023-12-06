@@ -134,8 +134,8 @@ npm install dom-vertical-mini-map
 |-------------|--------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------|
 | text        | String | false    | Custom text.                                                                                                                                      |
 | selector    | String | false    | CSS selector for searching by [querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) HTMLElement for analyze. |
-| attribute   | String | false    | Take value from `attribute` of element founded by [selector](#pointsTitleConstructor).selector.                                                   |
-| textContent | String | false    | Take string from `textContent` of element founded by [selector](#pointsTitleConstructor).selector.                                                |
+| attribute   | String | false    | Take value from `attribute` of element founded by [selector](#pointsTitleConstructor).                                                            |
+| textContent | String | false    | Take string from `textContent` of element founded by [selector](#pointsTitleConstructor).                                                         |
 
 ## Getters
 
