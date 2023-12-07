@@ -1,12 +1,12 @@
 
-.main {
+main {
   display: grid;
   grid-gap: 0.5rem;
   grid-template-columns: 1fr;
   width: 90%;
 }
 
-.grid {
+form {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 0.5rem;
