@@ -1,7 +1,7 @@
 {
   "name": "dom-vertical-mini-map",
-  "version": "0.0.1",
-  "description": "Build vertical mini map of elements in DOM.",
+  "version": "0.0.2",
+  "description": "Build vertical mini map of elements in DOM. Deprecated.",
   "author": "Igor Iakovlev <igorxut@gmail.com>",
   "license": "MIT",
   "private": false,

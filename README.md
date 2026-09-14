@@ -1,13 +1,25 @@
 # DomVerticalMiniMap
 
-[![License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/igorxut/dom-vertical-mini-map/blob/master/LICENSE)
 [![NPM version](https://img.shields.io/npm/v/dom-vertical-mini-map.svg)](https://www.npmjs.com/package/dom-vertical-mini-map)
+
+> [!WARNING]
+> **This project is deprecated and no longer maintained.**
+>
+> It has been superseded by [Tracker](https://github.com/rightxt/tracker), a more capable and actively maintained successor.
+>
+> For Vanilla JavaScript, use [`@rightxt/tracker-vanilla`](https://www.npmjs.com/package/@rightxt/tracker-vanilla).
+
+## Legacy documentation
+
+The documentation below is retained for existing projects that still use `dom-vertical-mini-map`.
+
+For new projects, use [Tracker](https://github.com/rightxt/tracker).
 
 ## Table of contents
 
 - [Description](#description)
 - [Installation](#installation)
-  - [NMP](#nmp)
+  - [NPM](#npm)
   - [Manual](#manual)
 - [Glossary](#glossary)
 - [Configuration](#configuration)
@@ -33,7 +45,7 @@ Component inject in DOM of page and has `position: fixed`.
 
 ## Installation
 
-### NMP
+### NPM
 
 ```shell
 npm install dom-vertical-mini-map
@@ -41,7 +53,7 @@ npm install dom-vertical-mini-map
 
 ### Manual
 
-[Download](master/dist) files from repository and use on page:
+[Download](dist) files from repository and use on page:
 
 ```html
 <link rel="stylesheet" href="dom-vertical-mini-map.css" />
@@ -155,7 +167,3 @@ npm install dom-vertical-mini-map
 ## Usage
 
 See [examples](https://igorxut.github.io/dom-vertical-mini-map/).
-
-## License
-
-[MIT](http://opensource.org/licenses/MIT)
