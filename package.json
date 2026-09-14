@@ -22,7 +22,7 @@
   "homepage": "https://github.com/igorxut/dom-vertical-mini-map#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/igorxut/dom-vertical-mini-map.git"
+    "url": "git+https://github.com/igorxut/dom-vertical-mini-map.git"
   },
   "scripts": {
     "lint": "eslint src",
